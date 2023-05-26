@@ -389,6 +389,17 @@ func TestMockGolden(t *testing.T) {
 			interfaces: []string{"GenericStore1", "GenericStore2", "AliasStore"},
 			goldenFile: filepath.Join("testpackages/generics", "generics_moq.golden.go"),
 		},
+		// Tests if moq imports the package of a third party generic object.
+		// See https://github.com/matryer/moq/issues/177
+		{
+			name:       "GenericsThirdParty",
+			cfg:        Config{SrcDir: "testpackages/genericsthirdparty"},
+			interfaces: []string{"GenericStore"},
+			goldenFile: filepath.Join(
+				"testpackages/genericsthirdparty",
+				"genericsthirdparty_moq.golden.go",
+			),
+		},
 		{
 			name:       "TransientImport",
 			cfg:        Config{SrcDir: "testpackages/transientimport"},
